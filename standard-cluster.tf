@@ -23,11 +23,11 @@ resource "google_container_cluster" "primary" {
 
   private_cluster_config {
     enable_private_nodes = true
-    master_ipv4_cidr_block = "172.16.0.0/28"
+    # master_ipv4_cidr_block = "172.16.0.0/28"
   }
 
-  ip_allocation_policy {
-    cluster_ipv4_cidr_block = "10.80.128.0/17"
-    services_ipv4_cidr_block = "10.81.0.0/22"
-  }
+  # ip_allocation_policy {
+  #  cluster_ipv4_cidr_block = "10.80.128.0/17"
+  #  services_ipv4_cidr_block = "10.81.0.0/22"
+  # }
 }
