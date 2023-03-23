@@ -4,6 +4,9 @@ steps:
   entrypoint: sh
   args: 
   - "-c"
-  - "terraform plan -var-file=staging.tfvars && terraform apply -auto-approve -var-file=staging.tfvars"
+  - |
+      terraform init -var-file=staging.tfvars
+      terraform plan -var-file=staging.tfvars
+      terraform apply -auto-approve -var-file=staging.tfvars
 
 timeout: 2400s
