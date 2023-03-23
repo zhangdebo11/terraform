@@ -13,8 +13,12 @@ resource "google_container_cluster" "primary" {
     machine_type = "e2-micro"
   }
 
-  management {
-    auto_upgrade = false
+  cluster_autoscaling {
+    auto_provisioning_defaults {
+      management {
+        auto_upgrade = false
+      }
+    }
   }
 
   private_cluster_config {
