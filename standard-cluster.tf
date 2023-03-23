@@ -27,7 +27,7 @@ resource "google_container_cluster" "primary" {
   }
 
   ip_allocation_policy {
-    cluster_ipv4_cidr_block = "10.90.128.0/17"
-    services_ipv4_cidr_block = "10.91.0.0/22"
+    cluster_ipv4_cidr_block = "10.80.128.0/17"
+    services_ipv4_cidr_block = "10.81.0.0/22"
   }
 }
