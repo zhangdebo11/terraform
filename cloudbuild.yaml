@@ -1,11 +1,5 @@
-options:
-  env:
-  - TEST=on
-  machineType: 'E2_HIGHCPU_8'
-
-# Build manju and push into bucket.
 steps:
-- id: "tf plan"
+- id: "terraform"
   name: hashicorp/terraform:1.0.0
   entrypoint: sh
   args: 
