@@ -1,31 +1,36 @@
+terraform {
+  backend "gcs" {
+    bucket = var.bucket_name
+    prefix = var.bucket_prefix
+  }
+}
+
 resource "google_container_cluster" "primary" {
-  name     = "staging-manju-melonpan-cluster-standard"
-  location = "asia-northeast1"
-  project  = "smartcart-stagingization"
+  name     = var.cluster_name
+  location = var.cluster_location
+  project  = var.cluster_project
 
-  network  = "default"
-  subnetwork = "staging-to-4u"
-
-  # initial_node_count       = 1
+  network  = var.cluster_network
+  subnetwork = var.cluster_subnetwork
 
   node_pool {
-    node_count = 1
+    node_count = var.node_count
     node_config {
-      # machine_type = "e2-standard-4"
-      machine_type = "e2-micro"
+      machine_type = var.machine_type
     }
     management {
       auto_upgrade = false
+      auto_repair = true
     }
   }
 
   private_cluster_config {
     enable_private_nodes = true
-    master_ipv4_cidr_block = "172.16.10.0/28"
+    master_ipv4_cidr_block = var.master_ipv4_cidr_block
   }
 
   ip_allocation_policy {
-    cluster_ipv4_cidr_block = "10.80.128.0/17"
-    services_ipv4_cidr_block = "10.81.0.0/22"
+    cluster_ipv4_cidr_block = var.pod_ipv4_cidr_block
+    services_ipv4_cidr_block = var.services_ipv4_cidr_block
   }
 }
