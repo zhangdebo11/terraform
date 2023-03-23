@@ -1,6 +1,3 @@
-bucket_name = "smartcart-stagingization-tfstate"
-bucket_prefix = "staging"
-
 cluster_name = "staging-manju-melonpan-cluster-standard"
 cluster_location = "asia-northeast1"
 cluster_project = "smartcart-stagingization"

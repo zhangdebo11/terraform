@@ -1,0 +1,13 @@
+steps:
+- id: "terraform"
+  name: hashicorp/terraform:1.3.9
+  entrypoint: sh
+  args: 
+  - "-c"
+  - |
+      cd staging
+      terraform init
+      terraform plan
+      terraform apply -auto-approve
+
+timeout: 2400s

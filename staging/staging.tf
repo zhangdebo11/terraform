@@ -1,10 +1,3 @@
-terraform {
-  backend "gcs" {
-    bucket = var.bucket_name
-    prefix = var.bucket_prefix
-  }
-}
-
 resource "google_container_cluster" "primary" {
   name     = var.cluster_name
   location = var.cluster_location
