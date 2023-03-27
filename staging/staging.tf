@@ -7,9 +7,9 @@ resource "google_container_cluster" "primary" {
   subnetwork = "staging-to-4u"
 
   node_pool {
-    node_count = 2
+    node_count = 1
     node_config {
-      machine_type = "e2-medium"
+      machine_type = "e2-highcpu-4"
     }
     management {
       auto_upgrade = false
