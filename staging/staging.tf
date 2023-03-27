@@ -28,7 +28,8 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   node_count = 1
 
   node_config {
-    machine_type = "e2-standard-4"
+    machine_type = "e2-micro"
+    # machine_type = "e2-standard-4"
   }
 
   management {
