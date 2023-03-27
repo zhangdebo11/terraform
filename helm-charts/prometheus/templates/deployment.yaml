@@ -54,7 +54,7 @@ spec:
         - --stackdriver.project-id
         - smartcart-stagingization
         - --stackdriver.kubernetes.cluster-name
-        - staging-manju-melonpan-cluster
+        - {{ .Values.cluster_name }}
         - --stackdriver.kubernetes.location
         - asia-northeast1
         - --prometheus.wal-directory

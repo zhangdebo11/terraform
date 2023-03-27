@@ -1,3 +1,4 @@
 gcp_service_account: staging-manju-melonpan-cluster-standard@smartcart-stagingization.iam.gserviceaccount.com
+cluster_name: staging-manju-melonpan-cluster-standard
 
 # staging-manju-melonpan-cluster@smartcart-stagingization.iam.gserviceaccount.com
