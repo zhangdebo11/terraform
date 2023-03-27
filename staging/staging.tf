@@ -9,7 +9,7 @@ resource "google_container_cluster" "primary" {
   node_pool {
     node_count = 1
     node_config {
-      machine_type = "e2-small"
+      machine_type = "e2-micro"
     }
     management {
       auto_upgrade = false
