@@ -30,7 +30,7 @@ spec:
         - --storage.tsdb.path=/data
         - --storage.tsdb.retention=5m
         image: prom/prometheus:v2.19.0
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         name: prometheus
         ports:
         - containerPort: 9090

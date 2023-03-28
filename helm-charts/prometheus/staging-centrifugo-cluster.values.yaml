@@ -1,0 +1,2 @@
+gcp_service_account: staging-centrifugo-cluster-standard@smartcart-stagingization.iam.gserviceaccount.com
+cluster_name: staging-centrifugo-cluster-standard
