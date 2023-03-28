@@ -25,7 +25,7 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   cluster    = google_container_cluster.primary.name
   project    = "smartcart-stagingization"
 
-  node_count = 0
+  node_count = 1
 
   node_config {
     machine_type = "e2-standard-4"
