@@ -40,6 +40,15 @@ helm upgrade --install -n manju -f staging-values.yaml manju ./
 
 kubectl create ns gulab
 helm upgrade --install -n gulab -f staging-values.yaml gulab ./
+
+kubectl create ns macaron
+helm upgrade --install -n macaron -f staging-values.yaml macaron ./
+
+kubectl create ns monaka
+helm upgrade --install -n monaka -f staging-values.yaml monaka ./
+
+kubectl create ns melonpan
+helm upgrade --install -n melonpan -f staging-values.yaml melonpan ./
 ```
 
 # modify ArgoCD
