@@ -37,6 +37,9 @@ kubectl delete ing manju
 ```shell
 kubectl create ns manju
 helm upgrade --install -n manju -f staging-values.yaml manju ./
+
+kubectl create ns gulab
+helm upgrade --install -n gulab -f staging-values.yaml gulab ./
 ```
 
 # modify ArgoCD
