@@ -2,6 +2,7 @@ resource "google_compute_instance_template" "staging_manju" {
   name         = "staging-standard-cluster-manju"
   machine_type = "e2-micro"
   region       = "asia-northeast1"
+  project  = "smartcart-stagingization"
 
   disk {
     source_image = "projects/smartcart-stagingization/global/images/ssc-common-centos7-image"
@@ -18,6 +19,7 @@ resource "google_compute_region_instance_group_manager" "staging_manju" {
 
   base_instance_name = "staging_standard_cluster_manju"
   region             = "asia-northeast1"
+  project  = "smartcart-stagingization"
 
   version {
     instance_template  = google_compute_instance_template.staging_manju.id
