@@ -16,9 +16,9 @@ resource "google_compute_instance_template" "staging_manju" {
 }
 
 resource "google_compute_region_instance_group_manager" "staging_manju" {
-  name = "staging_standard_cluster_manju"
+  name = "staging-standard-cluster-manju"
 
-  base_instance_name = "staging_standard_cluster_manju"
+  base_instance_name = "staging-standard-cluster-manju"
   region             = "asia-northeast1"
   project  = "smartcart-stagingization"
 
