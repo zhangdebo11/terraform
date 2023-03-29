@@ -1,39 +1,10 @@
-resource "google_compute_instance_template" "staging_manju" {
-  name         = "staging-standard-cluster-manju"
-  machine_type = "e2-micro"
-  region       = "asia-northeast1"
-  project  = "smartcart-stagingization"
-
-  disk {
-    source_image = "projects/smartcart-stagingization/global/images/ssc-common-centos7-image"
-  }
-
-  network_interface {
-    network    = "default"
-    subnetwork = "staging-to-4u"
-    subnetwork_project = "smartcart-stagingization"
-  }
-}
-
-resource "google_compute_region_instance_group_manager" "staging_manju" {
-  name = "staging-standard-cluster-manju"
-
-  base_instance_name = "staging-standard-cluster-manju"
-  region             = "asia-northeast1"
-  project  = "smartcart-stagingization"
-
-  version {
-    instance_template  = google_compute_instance_template.staging_manju.id
-  }
-}
-
 resource "google_container_cluster" "staging_manju" {
   name     = "staging-manju-melonpan-cluster-standard"
   location = "asia-northeast1"
   project  = "smartcart-stagingization"
 
-  # network  = "default"
-  # subnetwork = "staging-to-4u"
+  network  = "default"
+  subnetwork = "staging-to-4u"
 
   initial_node_count       = 1
 
@@ -56,12 +27,11 @@ resource "google_container_node_pool" "staging_manju" {
   cluster    = google_container_cluster.staging_manju.name
   project    = "smartcart-stagingization"
 
-  node_count = 1
+  node_count = 0
 
   node_config {
     # machine_type = "e2-standard-4"
-    # machine_type = "e2-micro"
-    node_group = google_compute_region_instance_group_manager.staging_manju.name
+    machine_type = "e2-micro"
   }
 
   management {
