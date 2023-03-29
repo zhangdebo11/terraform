@@ -20,7 +20,7 @@ resource "google_container_cluster" "primary" {
   }
 
   release_channel {
-    channel = "Stable"
+    channel = "STABLE"
   }
 }
 
