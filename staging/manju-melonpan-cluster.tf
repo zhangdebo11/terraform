@@ -51,7 +51,7 @@ resource "google_compute_region_instance_group_manager" "staging_manju" {
 }
 
 resource "google_compute_instance_template" "staging_manju" {
-  name = "staging_standard_cluster_manju"
+  name = "staging-standard-cluster-manju"
   machine_type = "e2-micro"
   region       = "asia-northeast1"
   disk {
