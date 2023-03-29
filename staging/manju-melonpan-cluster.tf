@@ -19,8 +19,8 @@ resource "google_container_cluster" "primary" {
     services_ipv4_cidr_block = "10.81.0.0/22"
   }
 
-  cluster_autoscaling {
-    auto_provisioning_defaults {}
+  release_channel {
+    channel = "Stable"
   }
 }
 
@@ -33,7 +33,8 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   node_count = 1
 
   node_config {
-    machine_type = "e2-standard-4"
+    # machine_type = "e2-standard-4"
+    machine_type = "e2-micro"
   }
 
   management {
