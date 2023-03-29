@@ -18,6 +18,8 @@ resource "google_container_cluster" "primary" {
     cluster_ipv4_cidr_block = "10.80.128.0/17"
     services_ipv4_cidr_block = "10.81.0.0/22"
   }
+
+  auto_provisioning_defaults {}
 }
 
 resource "google_container_node_pool" "primary_preemptible_nodes" {
