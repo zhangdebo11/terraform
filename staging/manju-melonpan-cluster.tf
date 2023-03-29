@@ -3,8 +3,8 @@ resource "google_container_cluster" "staging_manju" {
   location = "asia-northeast1"
   project  = "smartcart-stagingization"
 
-  network  = "default"
-  subnetwork = "staging-to-4u"
+  # network  = "default"
+  # subnetwork = "staging-to-4u"
 
   initial_node_count       = 1
 
@@ -45,7 +45,7 @@ resource "google_compute_region_instance_group_manager" "staging_manju" {
   name = "staging_standard_cluster_manju"
 
   base_instance_name = "staging_standard_cluster_manju"
-  region             = "us-central1"
+  region             = "asia-northeast1"
 
   version {
     instance_template  = google_compute_instance_template.staging_manju.id
@@ -59,5 +59,10 @@ resource "google_compute_instance_template" "staging_manju" {
 
   disk {
     source_image = "projects/smartcart-stagingization/global/images/ssc-common-centos7-image"
+  }
+
+  network_interface {
+    network  = "default"
+    subnetwork = "staging-to-4u"
   }
 }
