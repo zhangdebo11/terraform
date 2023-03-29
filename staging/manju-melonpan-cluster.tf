@@ -11,6 +11,7 @@ resource "google_compute_instance_template" "staging_manju" {
   network_interface {
     network    = "default"
     subnetwork = "staging-to-4u"
+    subnetwork_project = "smartcart-stagingization"
   }
 }
 
