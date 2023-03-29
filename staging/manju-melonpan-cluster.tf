@@ -6,6 +6,8 @@ resource "google_container_cluster" "staging_manju" {
   network  = "default"
   subnetwork = "staging-to-4u"
 
+  initial_node_count       = 1
+
   remove_default_node_pool = true
 
   private_cluster_config {
@@ -51,9 +53,10 @@ resource "google_compute_region_instance_group_manager" "staging_manju" {
 }
 
 resource "google_compute_instance_template" "staging_manju" {
-  name = "staging-standard-cluster-manju"
+  name         = "staging-standard-cluster-manju"
   machine_type = "e2-micro"
   region       = "asia-northeast1"
+
   disk {
     source_image = "projects/smartcart-stagingization/global/images/ssc-common-centos7-image"
   }
