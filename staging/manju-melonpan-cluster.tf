@@ -6,6 +6,7 @@ resource "google_container_cluster" "primary" {
   network  = "default"
   subnetwork = "staging-to-4u"
 
+  initial_node_count = 1
   remove_default_node_pool = true
 
   private_cluster_config {
