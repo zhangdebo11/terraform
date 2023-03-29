@@ -55,6 +55,6 @@ resource "google_compute_instance_template" "staging_manju" {
   machine_type = "e2-micro"
   region       = "asia-northeast1"
   disk {
-    source_image = projects/smartcart-stagingization/global/images/ssc-common-centos7-image
+    source_image = "projects/smartcart-stagingization/global/images/ssc-common-centos7-image"
   }
 }
