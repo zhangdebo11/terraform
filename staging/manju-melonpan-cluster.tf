@@ -1,3 +1,29 @@
+resource "google_compute_instance_template" "staging_manju" {
+  name         = "staging-standard-cluster-manju"
+  machine_type = "e2-micro"
+  region       = "asia-northeast1"
+
+  disk {
+    source_image = "projects/smartcart-stagingization/global/images/ssc-common-centos7-image"
+  }
+
+  network_interface {
+    network    = "default"
+    subnetwork = "staging-to-4u"
+  }
+}
+
+resource "google_compute_region_instance_group_manager" "staging_manju" {
+  name = "staging_standard_cluster_manju"
+
+  base_instance_name = "staging_standard_cluster_manju"
+  region             = "asia-northeast1"
+
+  version {
+    instance_template  = google_compute_instance_template.staging_manju.id
+  }
+}
+
 resource "google_container_cluster" "staging_manju" {
   name     = "staging-manju-melonpan-cluster-standard"
   location = "asia-northeast1"
@@ -38,31 +64,5 @@ resource "google_container_node_pool" "staging_manju" {
   management {
     auto_upgrade = false
     auto_repair = true
-  }
-}
-
-resource "google_compute_region_instance_group_manager" "staging_manju" {
-  name = "staging_standard_cluster_manju"
-
-  base_instance_name = "staging_standard_cluster_manju"
-  region             = "asia-northeast1"
-
-  version {
-    instance_template  = google_compute_instance_template.staging_manju.id
-  }
-}
-
-resource "google_compute_instance_template" "staging_manju" {
-  name         = "staging-standard-cluster-manju"
-  machine_type = "e2-micro"
-  region       = "asia-northeast1"
-
-  disk {
-    source_image = "projects/smartcart-stagingization/global/images/ssc-common-centos7-image"
-  }
-
-  network_interface {
-    network  = "default"
-    subnetwork = "staging-to-4u"
   }
 }
