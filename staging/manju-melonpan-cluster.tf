@@ -9,8 +9,9 @@ resource "google_container_cluster" "primary" {
   remove_default_node_pool = true
 
   private_cluster_config {
-    enable_private_nodes = true
-    master_ipv4_cidr_block = "172.16.10.0/28"
+    enable_private_nodes = false
+    // enable_private_nodes = true
+    // master_ipv4_cidr_block = "172.16.10.0/28"
   }
 
   ip_allocation_policy {
@@ -28,7 +29,8 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   node_count = 1
 
   node_config {
-    machine_type = "e2-standard-4"
+    // machine_type = "e2-standard-4"
+    machine_type = "e2-micro"
   }
 
   management {

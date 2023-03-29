@@ -7,6 +7,8 @@ gsutil versioning set on gs://smartcart-stagingization-tfstate
 
 # deploy cluster using terraform
 
+cloud build trigger `terraform-standardcluster`
+
 # install proxysql
 
 https://github.com/retail-ai-inc/proxysql-k8s
@@ -16,20 +18,32 @@ kubectl create ns proxysql
 helm upgrade --install -n proxysql -f values.yaml proxysql ./
 ```
 
+# install mongos
+
+https://github.com/retail-ai-inc/docker-mongos
+
+cloud build trigger `manju-mongos-staging-standard`
+
 # install prometheus
-创建 gcp_service_account 赋予 monitoring metric writer 角色
+安装前先创建 gcp_service_account，并赋予 monitoring metric writer 角色
 
 ```shell
 kubectl create ns monitoring
 helm upgrade --install -n monitoring -f staging-values.yaml prometheus ./
 ```
 
-# migrate manju
+# install metrics-sidecar webhookconfig
+
+# migrate applications
 
 ## delete manju ingress in old cluster
 
 ```shell
 kubectl delete ing manju
+
+kubectl scale deploy manju --replicas=0
+
+# kubectl delete managedcertificate sandbox-raicart-io-cert
 ```
 
 ## install manju in new cluster
@@ -51,7 +65,11 @@ kubectl create ns melonpan
 helm upgrade --install -n melonpan -f staging-values.yaml melonpan ./
 ```
 
+会生成新的证书吗？
+
 # modify ArgoCD
+
+修改app的目标集群
 
 # 其他手动优化项
 
