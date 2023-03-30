@@ -51,6 +51,10 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
     auto_upgrade = false
     auto_repair = true
   }
+
+  autoscaling {
+    min_node_count = 1
+  }
 }
 
 # 脚本每次重启都会执行一次
