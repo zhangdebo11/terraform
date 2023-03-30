@@ -40,7 +40,8 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   node_config {
     # machine_type = "e2-standard-4" # 4c 16GB
     machine_type = "e2-micro"
-    image_type = "UBUNTU_CONTAINERD"
+    image_type   = "COS_CONTAINERD"
+    disk_size_gb = 100
   }
 
   management {
@@ -48,23 +49,3 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
     auto_repair = true
   }
 }
-
-/*
-resource "google_container_node_pool" "primary_preemptible_nodes_2" {
-  name       = "pool-2"
-  location   = "asia-northeast1"
-  cluster    = google_container_cluster.primary.name
-  project    = "smartcart-stagingization"
-
-  node_count = 1
-
-  node_config {
-    machine_type = "e2-highcpu-4" # 4c 4GB
-  }
-
-  management {
-    auto_upgrade = false
-    auto_repair = true
-  }
-}
-*/
