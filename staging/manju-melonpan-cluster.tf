@@ -30,6 +30,26 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   cluster    = google_container_cluster.primary.name
   project    = "smartcart-stagingization"
 
+  node_count = 0
+
+  node_config {
+    # machine_type = "e2-standard-4"
+    machine_type = "e2-micro"
+  }
+
+  management {
+    auto_upgrade = false
+    auto_repair = true
+  }
+}
+
+
+resource "google_container_node_pool" "primary_preemptible_nodes_2" {
+  name       = "pool-2"
+  location   = "asia-northeast1"
+  cluster    = google_container_cluster.primary.name
+  project    = "smartcart-stagingization"
+
   node_count = 1
 
   node_config {
