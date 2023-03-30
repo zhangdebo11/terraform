@@ -9,6 +9,10 @@ resource "google_container_cluster" "primary" {
   initial_node_count = 1
   remove_default_node_pool = true
 
+  node_config {
+    machine_type = "e2-micro"
+  }
+
   private_cluster_config {
     enable_private_nodes = false
     # enable_private_nodes = true
@@ -34,8 +38,9 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   node_count = 1
 
   node_config {
-    # machine_type = "e2-standard-4"
+    # machine_type = "e2-standard-4" # 4c 16GB
     machine_type = "e2-micro"
+    image_type = "UBUNTU_CONTAINERD"
   }
 
   management {
@@ -54,8 +59,7 @@ resource "google_container_node_pool" "primary_preemptible_nodes_2" {
   node_count = 1
 
   node_config {
-    # machine_type = "e2-standard-4"
-    machine_type = "e2-micro"
+    machine_type = "e2-highcpu-4" # 4c 4GB
   }
 
   management {
