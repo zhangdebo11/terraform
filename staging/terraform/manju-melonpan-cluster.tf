@@ -53,8 +53,8 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   }
 
   autoscaling {
-    min_node_count = 1
-    max_node_count = 10
+    total_min_node_count = 3
+    total_max_node_count = 100
   }
 }
 
