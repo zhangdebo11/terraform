@@ -8,6 +8,8 @@ fi
 
 # Sysctl
 
+echo "Set system parameters..."
+
 cat >/etc/sysctl.conf<<EOF
 # Increases system file descriptor limit, inode cache & restricts core dumps
 fs.file-max = 65535
@@ -162,6 +164,8 @@ EOF
 
 sysctl -p
 
+echo "Increase number of open files..."
+
 # Increase Number Of Open Files
 cat > /etc/security/limits.conf <<EOF
 root soft nofile 65536
@@ -169,6 +173,8 @@ root hard nofile 65536
 * soft nofile 65536
 * hard nofile 65536
 EOF
+
+echo "Init over, reboot..."
 
 # over
 touch /var/init_script_over
