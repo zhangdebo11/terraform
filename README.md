@@ -1,22 +1,13 @@
 # create Cloud Storage bucket
 
-用来保存terraform生成的状态文件
+用来保存terraform生成的状态文件，以及初始化脚本
 
 ```shell
-gsutil mb gs://smartcart-stagingization-tfstate
-gsutil versioning set on gs://smartcart-stagingization-tfstate
+gsutil mb gs://staging-standard-cluster
+gsutil versioning set on gs://staging-standard-cluster
 ```
 
-# create init script bucket
-
-用来保存vm的初始化脚本
-
-```shell
-gsutil mb gs://staging-standard-cluster-node-init-script
-gsutil versioning set on gs://staging-standard-cluster-node-init-script
-```
-
-然后上传shell脚本 `system-config.sh`
+然后上传shell脚本 `system-init-script.sh`
 
 # deploy cluster using terraform
 

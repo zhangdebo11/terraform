@@ -47,7 +47,7 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
     image_type   = "UBUNTU_CONTAINERD"
     disk_size_gb = 100
     metadata = {
-      "startup-script-url" = "gs://staging-standard-cluster-node-init-script/system-config.sh"
+      "startup-script-url" = "gs://staging-standard-cluster/system-init-script.sh"
     }
   }
 

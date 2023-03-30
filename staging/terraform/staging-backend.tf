@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "smartcart-stagingization-tfstate"
-    prefix = "staging"
+    bucket = "staging-standard-cluster"
+    prefix = "staging-tfstate"
   }
 }
