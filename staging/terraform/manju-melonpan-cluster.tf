@@ -40,7 +40,7 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   node_config {
     # machine_type = "e2-standard-4" # 4c 16GB
     machine_type = "e2-micro"
-    image_type   = "COS_CONTAINERD"
+    image_type   = "UBUNTU_CONTAINERD"
     disk_size_gb = 100
   }
 
