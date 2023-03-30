@@ -24,6 +24,10 @@ resource "google_container_cluster" "primary" {
     services_ipv4_cidr_block = "10.81.0.0/22"
   }
 
+  cluster_autoscaling {
+    enabled = true
+  }
+
   release_channel {
     channel = "UNSPECIFIED"
   }

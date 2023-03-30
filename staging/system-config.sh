@@ -170,17 +170,6 @@ root hard nofile 65536
 * hard nofile 65536
 EOF
 
-# Add Extra SWAP Space To The Server
-if [[ ! -f /var/swap.1 ]]; then
-/bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
-chmod 600 /var/swap.1
-/sbin/mkswap /var/swap.1
-/sbin/swapon /var/swap.1
-cat >> /etc/fstab<<EOF
-/var/swap.1 swap swap defaults 0 0
-EOF
-fi
-
 # over
 touch /var/init_script_over
 
