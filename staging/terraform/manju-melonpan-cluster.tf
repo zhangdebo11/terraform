@@ -42,6 +42,9 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
     machine_type = "e2-micro"
     image_type   = "UBUNTU_CONTAINERD"
     disk_size_gb = 100
+    metadata = {
+      "startup-script-url" = "gs://staging-standard-cluster-node-init-script/system-config.sh"
+    }
   }
 
   management {
@@ -49,3 +52,6 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
     auto_repair = true
   }
 }
+
+# 脚本每次重启都会执行一次
+# 集群自动伸缩，自动升级？
