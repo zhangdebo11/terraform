@@ -29,6 +29,7 @@ https://github.com/retail-ai-inc/docker-mongos
 cloud build trigger `manju-mongos-staging-standard`
 
 # install prometheus
+
 安装前先创建 gcp_service_account，并赋予 monitoring metric writer 角色
 
 ```shell
