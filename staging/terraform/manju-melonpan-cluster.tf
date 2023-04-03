@@ -2,7 +2,7 @@ resource "google_container_cluster" "primary" {
   name     = "staging-manju-melonpan-cluster-standard"
   location = "asia-northeast1"
   project  = "smartcart-stagingization"
-  min_master_version = "1.21.14-gke.14600"
+  # min_master_version = "1.21.14-gke.14600"
   # node_version = "1.21.14-gke.14600"
 
   network  = "default"
@@ -37,7 +37,7 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   cluster    = google_container_cluster.primary.name
   project    = "smartcart-stagingization"
 
-  version = "1.21.14-gke.14600"
+  # version = "1.21.14-gke.14600"
   node_count = 1
 
   node_config {
@@ -55,8 +55,8 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
     auto_repair = true
   }
 
-  # autoscaling {
-  #  total_min_node_count = 3
-  #  total_max_node_count = 100
-  # }
+  autoscaling {
+    total_min_node_count = 3
+    total_max_node_count = 100
+  }
 }
