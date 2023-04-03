@@ -55,8 +55,8 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
     auto_repair = true
   }
 
-  autoscaling {
-    total_min_node_count = 3
-    total_max_node_count = 100
-  }
+  # autoscaling {
+  #  total_min_node_count = 3
+  #  total_max_node_count = 100
+  # }
 }
