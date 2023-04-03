@@ -2,6 +2,7 @@ resource "google_container_cluster" "primary" {
   name     = "staging-manju-melonpan-cluster-standard"
   location = "asia-northeast1"
   project  = "smartcart-stagingization"
+  min_master_version = "1.21.14-gke.14600"
 
   network  = "default"
   subnetwork = "staging-to-4u"
