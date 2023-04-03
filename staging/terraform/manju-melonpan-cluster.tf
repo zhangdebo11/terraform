@@ -2,8 +2,6 @@ resource "google_container_cluster" "primary" {
   name     = "staging-manju-melonpan-cluster-standard"
   location = "asia-northeast1"
   project  = "smartcart-stagingization"
-  # min_master_version = "1.21.14-gke.14600"
-  # node_version = "1.21.14-gke.14600"
 
   network  = "default"
   subnetwork = "staging-to-4u"
@@ -37,7 +35,6 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   cluster    = google_container_cluster.primary.name
   project    = "smartcart-stagingization"
 
-  version = "1.24.9-gke.3200"
   node_count = 1
 
   node_config {
