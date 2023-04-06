@@ -51,47 +51,29 @@ helm -n metrics-sidecar-injector uninstall metrics-sidecar-injector
 
 在新集群中创建 namespace `metrics-sidecar-injector`。
 
+```shell
+kubectl create ns metrics-sidecar-injector
+```
+
 修改 trigger `metrics-sidecar-injector-staging-deploy` 中的变量 `_CLUSTER_` 值。执行trigger。
 
 在所有集群中创建 mutatingwebhookconfiguration `metrics-sidecar-webhook-config`。
 
-# migrate applications
+# migrate manju
 
-## delete manju ingress in old cluster
-
-```shell
-kubectl delete ing manju
-
-kubectl scale deploy manju --replicas=0
-
-# kubectl delete managedcertificate sandbox-raicart-io-cert
-```
-
-## install manju in new cluster
+删除旧集群中的manju
 
 ```shell
-kubectl create ns manju
-helm upgrade --install -n manju -f staging-values.yaml manju ./
-
-kubectl create ns gulab
-helm upgrade --install -n gulab -f staging-values.yaml gulab ./
-
-kubectl create ns macaron
-helm upgrade --install -n macaron -f staging-values.yaml macaron ./
-
-kubectl create ns monaka
-helm upgrade --install -n monaka -f staging-values.yaml monaka ./
-
-kubectl create ns melonpan
-helm upgrade --install -n melonpan -f staging-values.yaml melonpan ./
+helm uninstall manju
 ```
+
+修改trigger `manju-develop-build` 和 `manju-develop-deploy` 中 `_CLUSTER` 的值，然后执行 trigger `manju-develop-build`
+
+修改ArgoCD中manju配置
 
 会生成新的证书吗？
 
-# modify cloudbuild
+# migrate argocd
 
-# modify ArgoCD
 
-修改app的目标集群
-
-# install toxiproxy
+# migrate toxiproxy
