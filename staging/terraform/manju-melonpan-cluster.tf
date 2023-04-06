@@ -38,7 +38,8 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   node_count = 1
 
   node_config {
-    machine_type = "e2-standard-4" # 4c 16GB
+    # machine_type = "e2-standard-4" # 4c 16GB
+    machine_type = "custom-4-8192"
     image_type   = "UBUNTU_CONTAINERD"
     disk_size_gb = 100
     metadata = {
