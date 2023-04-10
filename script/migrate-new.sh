@@ -1,8 +1,11 @@
 #!/usr/bin/bash
 
+kubectl create ns proxysql
 kubectl create ns macaron
 kubectl create ns monaka
 kubectl create ns gulab
+kubectl create ns monitoring
+kubectl create ns metrics-sidecar-injector
 
 ########################################## ManagedCertificate ##########################################
 
@@ -34,6 +37,12 @@ kubectl apply -f tmp_ManagedCertificate.yaml
 rm -f tmp_ManagedCertificate.yaml
 
 ########################################## helm ##########################################
+
+cd /home/zhang_debo/github/retail-ai-inc/proxysql-k8s
+helm upgrade --install -n proxysql -f values.yaml proxysql ./
+
+cd /home/zhang_debo/github/zhangdebo11/terraform/helm-charts/prometheus
+helm upgrade --install -n monitoring -f staging-manju-melonpan-cluster.values.yaml prometheus ./
 
 cd /home/zhang_debo/github/retail-ai-inc/manju-helm/manju
 helm upgrade --install manju -f staging-values.yaml ./

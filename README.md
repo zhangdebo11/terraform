@@ -13,16 +13,19 @@ gsutil versioning set on gs://staging-standard-cluster
 
 cloud build trigger `terraform-standardcluster`
 
-# install proxysql
+# prepare prometheus
 
-https://github.com/retail-ai-inc/proxysql-k8s
+安装前先创建 gcp_service_account ，并赋予 monitoring metric writer 角色
 
-```shell
-kubectl create ns proxysql
-helm upgrade --install -n proxysql -f values.yaml proxysql ./
+# 关闭 metrics-sidecar-webhook
+
+删除所有集群的 mutatingwebhookconfiguration `metrics-sidecar-webhook-config`。
+
+```sh
+kubectl delete mutatingwebhookconfiguration metrics-sidecar-webhook-config
 ```
 
-# install mongos
+# 安装 mongos
 
 ```shell
 kubectl create ns mongos
@@ -30,38 +33,13 @@ kubectl create ns mongos
 
 cloud build trigger `manju-mongos-staging-standard`
 
-# install prometheus
-
-安装前先创建 gcp_service_account ，并赋予 monitoring metric writer 角色
-
-```shell
-kubectl create ns monitoring
-helm upgrade --install -n monitoring -f staging-manju-melonpan-cluster.values.yaml prometheus ./
-```
-
-# metrics-sidecar 迁移
-
-首先删除所有集群的 mutatingwebhookconfiguration `metrics-sidecar-webhook-config`。
-
-然后删除旧集群中的webhookserver服务。
-
-```shell
-helm -n metrics-sidecar-injector uninstall metrics-sidecar-injector
-```
-
-在新集群中创建 namespace `metrics-sidecar-injector`。
-
-```shell
-kubectl create ns metrics-sidecar-injector
-```
-
-修改 trigger `metrics-sidecar-injector-staging-deploy` 中的变量 `_CLUSTER_` 值。执行trigger。
-
-在所有集群中创建 mutatingwebhookconfiguration `metrics-sidecar-webhook-config`。
+创建 mongos service
 
 # migrate applications
 
 进入目录 /home/zhang_debo/github/retail-ai-inc/manju-helm 执行 git pull 更新代码
+
+进入目录 /home/zhang_debo/github/zhangdebo11/terraform 执行 git pull 更新代码
 
 在新集群中执行脚本 `migrate-new.sh`
 
@@ -73,6 +51,12 @@ kubectl create ns metrics-sidecar-injector
 修改ArgoCD中app配置
 
 修改trigger 中 `_CLUSTER` 的值
+
+# 安装新的metrics-sidecar
+
+修改 trigger `metrics-sidecar-injector-staging-deploy` 中的变量 `_CLUSTER_` 值。执行trigger。
+
+在所有集群中创建 mutatingwebhookconfiguration `metrics-sidecar-webhook-config`。
 
 
 # migrate toxiproxy

@@ -15,6 +15,8 @@ kubectl -n gulab scale deploy gulab --replicas=0
 kubectl -n monaka scale deploy monaka --replicas=0
 kubectl -n macaron scale deploy macaron  --replicas=0
 
+helm -n metrics-sidecar-injector uninstall metrics-sidecar-injector
+
 # helm -n default uninstall manju 
 # helm -n gulab uninstall gulab 
 # helm -n monaka uninstall monaka 
