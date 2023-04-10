@@ -5,7 +5,7 @@ steps:
   args: 
   - "-c"
   - |
-      cd staging/terraform
+      cd staging/terraform/manju
       terraform init
       terraform plan
       terraform apply -auto-approve

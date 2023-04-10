@@ -71,8 +71,7 @@ kubectl delete ing manju
 在新集群中部署manju
 
 ```sh
-kubectl create ns manju
-helm upgrade --install manju -n manju -f staging-values.yaml ./
+helm upgrade --install manju  -f staging-values.yaml ./
 ```
 
 修改armor规则对应的target
