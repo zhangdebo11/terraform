@@ -59,124 +59,20 @@ kubectl create ns metrics-sidecar-injector
 
 在所有集群中创建 mutatingwebhookconfiguration `metrics-sidecar-webhook-config`。
 
-# migrate manju
+# migrate applications
 
-删除旧集群中的manju服务
+进入目录 /home/zhang_debo/github/retail-ai-inc/manju-helm 执行 git pull 更新代码
 
-```sh
-kubectl delete managedcertificate sandbox-raicart-io-cert
-kubectl delete ing manju
-```
+在新集群中执行脚本 `migrate-new.sh`
 
-在新集群中部署manju
+在旧集群中执行脚本 `migrate-old.sh`
 
-```sh
-helm upgrade --install manju  -f staging-values.yaml ./
-```
 
 修改armor规则对应的target
 
-修改ArgoCD中manju配置
+修改ArgoCD中app配置
 
-修改trigger `manju-develop-build` 中 `_CLUSTER` 的值
-
-
-
-# migrate gulab
-
-删除旧集群中的gulab服务
-
-```sh
-kubectl -n gulab delete managedcertificate sandbox-gulab-raicart-io-cert
-kubectl -n gulab delete ing gulab
-```
-
-在新集群中创建证书
-
-```yaml
-apiVersion: networking.gke.io/v1
-kind: ManagedCertificate
-metadata:
-  name: sandbox-gulab-raicart-io-cert
-  namespace: gulab
-spec:
-  domains:
-  - sandbox-gulab.raicart.io
-```
-
-在新集群中部署gulab
-
-```sh
-kubectl create ns gulab
-helm upgrade --install gulab -n gulab -f staging-values.yaml ./
-```
-
-修改armor规则对应的target
-
-修改ArgoCD中gulab配置
-
-修改trigger `gulab-develop-build` 中 `_CLUSTER` 的值
-
-
-
-# migrate monaka
-
-删除旧集群中的gulab服务
-
-```sh
-kubectl -n monaka delete managedcertificate sandbox-monaka-raicart-io-cert
-kubectl -n monaka delete ing monaka
-```
-
-在新集群中创建证书
-
-```yaml
-apiVersion: networking.gke.io/v1
-kind: ManagedCertificate
-metadata:
-  name: sandbox-monaka-raicart-io-cert
-  namespace: monaka
-spec:
-  domains:
-  - sandbox-monaka.raicart.io
-```
-
-在新集群中部署 monaka
-
-```sh
-kubectl create ns monaka
-helm upgrade --install monaka -n monaka -f values.yaml ./
-```
-
-修改armor规则对应的target
-
-修改ArgoCD中 monaka 配置
-
-修改trigger
-
-
-# migrate macaron
-
-删除旧集群中的 macaron 服务
-
-```sh
-kubectl -n macaron delete managedcertificate macaron-cert
-kubectl -n macaron delete ing macaron
-```
-
-
-在新集群中部署 macaron
-
-```sh
-kubectl create ns macaron
-helm upgrade --install macaron -n macaron -f values.yaml ./
-```
-
-修改armor规则对应的target
-
-修改ArgoCD中 macaron 配置
-
-修改trigger
+修改trigger 中 `_CLUSTER` 的值
 
 
 # migrate toxiproxy
