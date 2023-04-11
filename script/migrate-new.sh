@@ -4,6 +4,7 @@ kubectl create ns proxysql
 kubectl create ns macaron
 kubectl create ns monaka
 kubectl create ns gulab
+kubectl create ns melonpan
 kubectl create ns monitoring
 kubectl create ns metrics-sidecar-injector
 
@@ -31,6 +32,16 @@ metadata:
 spec:
   domains:
   - sandbox-monaka.raicart.io
+
+---
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: sandbox-console-raicart-io-cert
+  namespace: melonpan
+spec:
+  domains:
+  - sandbox-console.raicart.io
 EOF
 
 kubectl apply -f tmp_ManagedCertificate.yaml
@@ -49,6 +60,9 @@ helm upgrade --install manju -f staging-values.yaml ./
 
 cd /home/zhang_debo/github/retail-ai-inc/manju-helm/gulab
 helm upgrade --install gulab -n gulab -f staging-values.yaml ./
+
+cd /home/zhang_debo/github/retail-ai-inc/manju-helm/melonpan
+helm upgrade --install melonpan -n melonpan -f staging-values.yaml ./
 
 cd /home/zhang_debo/github/retail-ai-inc/manju-helm/staging/macaron
 helm upgrade --install macaron -n macaron -f values.yaml ./
