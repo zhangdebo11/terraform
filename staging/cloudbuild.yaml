@@ -1,13 +1,28 @@
 steps:
-- id: "terraform"
+
+# - id: "manju_cluster"
+#   name: hashicorp/terraform:1.3.9
+#   entrypoint: sh
+#   args: 
+#   - "-c"
+#   - |
+#       cd staging/terraform/manju
+#       terraform init
+#       terraform plan
+#       terraform apply -auto-approve
+
+
+- id: "yakiimo_cluster"
   name: hashicorp/terraform:1.3.9
   entrypoint: sh
   args: 
   - "-c"
   - |
-      cd staging/terraform/manju
+      cd staging/terraform/yakiimo
       terraform init
       terraform plan
       terraform apply -auto-approve
+
+
 
 timeout: 2400s
