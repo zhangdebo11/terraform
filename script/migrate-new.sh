@@ -72,25 +72,25 @@ spec:
   domains:
   - sandbox-gulab.raicart.io
 
-# ---
-# apiVersion: networking.gke.io/v1
-# kind: ManagedCertificate
-# metadata:
-#   name: sandbox-monaka-raicart-io-cert
-#   namespace: monaka
-# spec:
-#   domains:
-#   - sandbox-monaka.raicart.io
+---
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: sandbox-monaka-raicart-io-cert
+  namespace: monaka
+spec:
+  domains:
+  - sandbox-monaka.raicart.io
 
-# ---
-# apiVersion: networking.gke.io/v1
-# kind: ManagedCertificate
-# metadata:
-#   name: sandbox-console-raicart-io-cert
-#   namespace: melonpan
-# spec:
-#   domains:
-#   - sandbox-console.raicart.io
+---
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: sandbox-console-raicart-io-cert
+  namespace: melonpan
+spec:
+  domains:
+  - sandbox-console.raicart.io
 EOF
 
 kubectl apply -f tmp_ManagedCertificate.yaml

@@ -31,6 +31,9 @@ kubectl delete mutatingwebhookconfiguration metrics-sidecar-webhook-config
 cd /home/zhang_debo/github/retail-ai-inc/manju-helm
 git pull
 
+cd /home/zhang_debo/github/retail-ai-inc/proxysql-k8s
+git pull
+
 cd /home/zhang_debo/github/zhangdebo11/terraform
 git pull
 ```
