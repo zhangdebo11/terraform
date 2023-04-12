@@ -22,8 +22,8 @@ kubectl -n melonpan scale deploy openresty  --replicas=0
 
 helm -n metrics-sidecar-injector uninstall metrics-sidecar-injector
 
-# helm -n default uninstall manju 
-# helm -n gulab uninstall gulab 
-# helm -n monaka uninstall monaka 
-# helm -n macaron uninstall macaron
-# helm -n melonpan uninstall melonpan
+helm -n default uninstall manju 
+helm -n gulab uninstall gulab 
+helm -n monaka uninstall monaka 
+helm -n macaron uninstall macaron
+helm -n melonpan uninstall melonpan

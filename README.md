@@ -25,21 +25,16 @@ cloud build trigger `terraform-standardcluster`
 kubectl delete mutatingwebhookconfiguration metrics-sidecar-webhook-config
 ```
 
-# 安装 mongos
-
-```shell
-kubectl create ns mongos
-```
-
-cloud build trigger `manju-mongos-staging-standard`
-
-创建 mongos service
-
 # migrate applications
 
-进入目录 /home/zhang_debo/github/retail-ai-inc/manju-helm 执行 git pull 更新代码
+```sh
+cd /home/zhang_debo/github/retail-ai-inc/manju-helm
+git pull
 
-进入目录 /home/zhang_debo/github/zhangdebo11/terraform 执行 git pull 更新代码
+cd /home/zhang_debo/github/zhangdebo11/terraform
+git pull
+```
+
 
 在新集群中执行脚本 `migrate-new.sh`
 
