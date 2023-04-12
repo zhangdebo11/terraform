@@ -42,7 +42,7 @@ resource "google_container_node_pool" "yakiimo_preemptible_nodes" {
   node_count = 1
 
   node_config {
-    machine_type = "custom-2-2048"
+    machine_type = "custom-4-4096"
     image_type   = "UBUNTU_CONTAINERD"
     disk_size_gb = 100
     metadata = {
@@ -56,7 +56,7 @@ resource "google_container_node_pool" "yakiimo_preemptible_nodes" {
   }
 
   autoscaling {
-    total_min_node_count = 3
+    total_min_node_count = 1
     total_max_node_count = 100
   }
 }

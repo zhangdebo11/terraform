@@ -39,9 +39,7 @@ git pull
 ```
 
 
-在新集群中执行脚本 `migrate-new.sh`
-
-在旧集群中执行脚本 `migrate-old.sh`
+在新集群中执行脚本 `migrate-manju-cluster.sh`
 
 
 修改armor规则对应的target

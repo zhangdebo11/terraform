@@ -1,0 +1,2 @@
+gcp_service_account: staging-yakiimo-cluster-standard@smartcart-stagingization.iam.gserviceaccount.com
+cluster_name: staging-yakiimo-cluster-standard

@@ -2,7 +2,8 @@
 
 set -e
 
-cd /home/zhang_debo
+mkdir -p /home/zhang_debo/cluster_migration/manju_cluster
+cd /home/zhang_debo/cluster_migration/manju_cluster
 
 cat >tmp_namespace.yaml<<EOF
 ---
@@ -59,7 +60,7 @@ kubectl apply -f tmp_namespace.yaml
 
 ########################################## ManagedCertificate ##########################################
 
-cd /home/zhang_debo
+cd /home/zhang_debo/cluster_migration/manju_cluster
 
 cat >tmp_ManagedCertificate.yaml<<EOF
 ---

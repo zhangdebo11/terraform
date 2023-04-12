@@ -1,2 +1,0 @@
-gcp_service_account: staging-autodeployer-cluster-standard@smartcart-stagingization.iam.gserviceaccount.com
-cluster_name: staging-autodeployer-cluster-standard
