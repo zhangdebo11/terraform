@@ -27,6 +27,12 @@ resource "google_container_cluster" "primary" {
   release_channel {
     channel = "UNSPECIFIED"
   }
+
+  addons_config {
+    dns_cache_config {
+      enabled = true
+    }
+  }
 }
 
 resource "google_container_node_pool" "primary_preemptible_nodes" {
