@@ -21,6 +21,7 @@ steps:
       cd staging/terraform/centrifugo
       terraform init
       terraform plan
+      terraform apply -auto-approve
 
 
 
