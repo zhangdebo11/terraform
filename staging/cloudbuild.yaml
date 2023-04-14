@@ -12,16 +12,26 @@ steps:
 #       terraform apply -auto-approve
 
 
+# - id: "centrifugo_cluster"
+#   name: hashicorp/terraform:1.3.9
+#   entrypoint: sh
+#   args: 
+#   - "-c"
+#   - |
+#       cd staging/terraform/centrifugo
+#       terraform init
+#       terraform plan
+#       terraform apply -auto-approve
+
 - id: "centrifugo_cluster"
   name: hashicorp/terraform:1.3.9
   entrypoint: sh
   args: 
   - "-c"
   - |
-      cd staging/terraform/centrifugo
+      cd staging/terraform/yakiimo
       terraform init
       terraform plan
-      terraform apply -auto-approve
 
 
 
