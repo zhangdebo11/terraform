@@ -42,7 +42,7 @@ resource "google_container_node_pool" "centrifugo_preemptible_nodes" {
   node_count = 1
 
   node_config {
-    machine_type = "custom-2-2048"
+    machine_type = "custom-2-4096"
     image_type   = "UBUNTU_CONTAINERD"
     disk_size_gb = 100
     metadata = {
