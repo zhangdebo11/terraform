@@ -15,9 +15,9 @@ Upload OS init script `system-init-script.sh` to this bucket.
 
 Check `cloudbuild.yaml` file content and run Cloud-Build trigger `terraform-standardcluster` to create standard clusters.
 
-**Note**: Please keep trigger `terraform-standardcluster` manual.
+**Note**: Please keep trigger `terraform-standardcluster` manual invocation.
 
-**Note**: Better NOT to use trigger `terraform-standardcluster` to modify clusters.
+**Note**: Better NOT to use trigger `terraform-standardcluster` to modify clusters, only use it for creating.
 
 # 3. Migrate Manju cluster
 
