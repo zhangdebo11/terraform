@@ -34,7 +34,7 @@ resource "google_container_cluster" "centrifugo" {
 }
 
 resource "google_container_node_pool" "centrifugo_preemptible_nodes" {
-  name       = "pool-1"
+  name       = "pool-3"
   location   = "asia-northeast1"
   cluster    = google_container_cluster.centrifugo.name
   project    = "smartcart-stagingization"
@@ -42,7 +42,7 @@ resource "google_container_node_pool" "centrifugo_preemptible_nodes" {
   node_count = 1
 
   node_config {
-    machine_type = "custom-2-4096"
+    machine_type = "custom-4-6144"
     image_type   = "UBUNTU_CONTAINERD"
     disk_size_gb = 100
     metadata = {
@@ -57,6 +57,6 @@ resource "google_container_node_pool" "centrifugo_preemptible_nodes" {
 
   autoscaling {
     total_min_node_count = 0
-    total_max_node_count = 100
+    total_max_node_count = 10
   }
 }

@@ -36,7 +36,7 @@ resource "google_container_cluster" "primary" {
 }
 
 resource "google_container_node_pool" "primary_preemptible_nodes" {
-  name       = "pool-1"
+  name       = "pool-3"
   location   = "asia-northeast1"
   cluster    = google_container_cluster.primary.name
   project    = "smartcart-stagingization"
