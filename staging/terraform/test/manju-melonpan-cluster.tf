@@ -65,4 +65,8 @@ resource "google_container_node_pool" "test_preemptible_nodes" {
     total_min_node_count = 0
     total_max_node_count = 5
   }
+
+  workload_metadata_config {
+    mode = "GKE_METADATA"
+  }
 }
