@@ -46,6 +46,7 @@ steps:
       cd staging/terraform/test
       terraform init
       terraform plan
+      terraform apply -auto-approve
 
 
 
