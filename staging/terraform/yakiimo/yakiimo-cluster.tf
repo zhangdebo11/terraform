@@ -61,6 +61,6 @@ resource "google_container_node_pool" "yakiimo_preemptible_nodes" {
 
   autoscaling {
     total_min_node_count = 1
-    total_max_node_count = 10
+    total_max_node_count = 11
   }
 }
