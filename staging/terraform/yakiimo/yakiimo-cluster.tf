@@ -32,9 +32,9 @@ resource "google_container_cluster" "yakiimo" {
     }
   }
 
-  workload_identity_config {
-    workload_pool = "smartcart-stagingization.svc.id.goog"
-  }
+  #workload_identity_config {
+  #  workload_pool = "smartcart-stagingization.svc.id.goog"
+  #}
 }
 
 resource "google_container_node_pool" "yakiimo_preemptible_nodes" {
