@@ -54,9 +54,9 @@ resource "google_container_node_pool" "test_preemptible_nodes" {
     metadata = {
       "startup-script-url" = "gs://staging-standard-cluster/system-init-script.sh"
     }
-    #workload_metadata_config {
-    #  mode = "GKE_METADATA"
-    #}
+    workload_metadata_config {
+      mode = "GKE_METADATA"
+    }
   }
 
   management {
