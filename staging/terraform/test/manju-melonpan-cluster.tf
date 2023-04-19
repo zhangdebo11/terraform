@@ -34,9 +34,9 @@ resource "google_container_cluster" "test" {
     }
   }
 
-  #workload_identity_config {
-  #  workload_pool = "smartcart-stagingization.svc.id.goog"
-  #}
+  workload_identity_config {
+    workload_pool = "smartcart-stagingization.svc.id.goog"
+  }
 }
 
 resource "google_container_node_pool" "test_preemptible_nodes" {
