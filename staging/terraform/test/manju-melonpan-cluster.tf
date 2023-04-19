@@ -34,9 +34,9 @@ resource "google_container_cluster" "test" {
     }
   }
 
-  #workload_identity_config {
-  #  workload_pool = "smartcart-stagingization.svc.id.goog"
-  #}
+  workload_identity_config {
+    workload_pool = "smartcart-stagingization.svc.id.goog"
+  }
 }
 
 resource "google_container_node_pool" "test_preemptible_nodes" {
@@ -53,9 +53,6 @@ resource "google_container_node_pool" "test_preemptible_nodes" {
     disk_size_gb = 100
     metadata = {
       "startup-script-url" = "gs://staging-standard-cluster/system-init-script.sh"
-    }
-    workload_metadata_config {
-      mode = "GKE_METADATA"
     }
   }
 
