@@ -22,11 +22,6 @@ resource "google_container_cluster" "yakiimo" {
     services_ipv4_cidr_block = "10.16.128.0/22"
   }
 
-  default_snat_status {
-    disabled = false
-  }
-
-
   release_channel {
     channel = "UNSPECIFIED"
   }
@@ -35,23 +30,15 @@ resource "google_container_cluster" "yakiimo" {
     dns_cache_config {
       enabled = true
     }
-    gce_persistent_disk_csi_driver_config {
-      enabled = true
-    }
-    network_policy_config {
-      disabled = true
-    }
-  }
-
-
-  cluster_autoscaling {
-    enabled = false
   }
 
   resource_labels = {
     "mesh_id" = "proj-495370126123"
   }
 
+  #workload_identity_config {
+  #  workload_pool = "smartcart-stagingization.svc.id.goog"
+  #}
 }
 
 resource "google_container_node_pool" "yakiimo_preemptible_nodes" {
