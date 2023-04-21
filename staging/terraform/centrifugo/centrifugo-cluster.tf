@@ -10,7 +10,7 @@ resource "google_container_cluster" "centrifugo" {
   remove_default_node_pool = true
 
   node_config {
-    machine_type = "e2-micro"
+    machine_type = "e2-custom-4-6144"
   }
 
   private_cluster_config {
@@ -42,11 +42,12 @@ resource "google_container_node_pool" "centrifugo_preemptible_nodes" {
   node_count = 1
 
   node_config {
-    machine_type = "custom-4-6144"
+    machine_type = "e2-custom-4-6144"
     image_type   = "UBUNTU_CONTAINERD"
     disk_size_gb = 100
     metadata = {
       "startup-script-url" = "gs://staging-standard-cluster/system-init-script.sh"
+      "disable-legacy-endpoints" = "true"
     }
   }
 
