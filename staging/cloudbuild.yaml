@@ -1,14 +1,15 @@
 steps:
 
-# - id: "manju_cluster"
-#   name: hashicorp/terraform:1.3.9
-#   entrypoint: sh
-#   args: 
-#   - "-c"
-#   - |
-#       cd staging/terraform/manju
-#       terraform init
-#       terraform plan
+- id: "manju_cluster"
+  name: hashicorp/terraform:1.3.9
+  entrypoint: sh
+  args: 
+  - "-c"
+  - |
+      cd staging/terraform/manju
+      terraform init
+      terraform plan
+
 
 
 # - id: "centrifugo_cluster"
@@ -24,15 +25,15 @@ steps:
 
 
 
-- id: "centrifugo_cluster"
-  name: hashicorp/terraform:1.3.9
-  entrypoint: sh
-  args: 
-  - "-c"
-  - |
-      cd staging/terraform/yakiimo
-      terraform init
-      terraform plan
+# - id: "centrifugo_cluster"
+#   name: hashicorp/terraform:1.3.9
+#   entrypoint: sh
+#   args: 
+#   - "-c"
+#   - |
+#       cd staging/terraform/yakiimo
+#       terraform init
+#       terraform plan
 
 
 

@@ -3,8 +3,8 @@ resource "google_container_cluster" "primary" {
   location = "asia-northeast1"
   project  = "smartcart-stagingization"
 
-  network  = "default"
-  subnetwork = "staging-to-4u"
+  network  = "projects/smartcart-stagingization/global/networks/default"
+  subnetwork = "projects/smartcart-stagingization/regions/asia-northeast1/subnetworks/staging-to-4u"
 
   initial_node_count = 1
   remove_default_node_pool = true
@@ -32,6 +32,10 @@ resource "google_container_cluster" "primary" {
     dns_cache_config {
       enabled = true
     }
+  }
+
+  resource_labels = {
+    "mesh_id" = "proj-495370126123"
   }
 }
 
