@@ -26,14 +26,6 @@ resource "google_container_cluster" "yakiimo" {
     disabled = false
   }
 
-  enable_autopilot = false
-  enable_binary_authorization = false
-  enable_intranode_visibility = false
-  enable_kubernetes_alpha = false
-  enable_l4_ilb_subsetting = false
-  enable_legacy_abac = false
-  enable_shielded_nodes = true
-  enable_tpu = false
 
   release_channel {
     channel = "UNSPECIFIED"
