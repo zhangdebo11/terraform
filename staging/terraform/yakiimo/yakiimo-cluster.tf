@@ -48,7 +48,7 @@ resource "google_container_cluster" "yakiimo" {
     enabled = false
   }
 
-  resource_labels {
+  resource_labels = {
     "mesh_id" = "proj-495370126123"
   }
 
