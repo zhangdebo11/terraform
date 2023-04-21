@@ -10,7 +10,7 @@ resource "google_container_cluster" "primary" {
   remove_default_node_pool = true
 
   node_config {
-    machine_type = "e2-micro"
+    machine_type = "e2-custom-8-16384"
   }
 
   private_cluster_config {
@@ -40,7 +40,7 @@ resource "google_container_cluster" "primary" {
 }
 
 resource "google_container_node_pool" "primary_preemptible_nodes" {
-  name       = "pool-3"
+  name       = "pool-1"
   location   = "asia-northeast1"
   cluster    = google_container_cluster.primary.name
   project    = "smartcart-stagingization"
@@ -48,11 +48,12 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   node_count = 1
 
   node_config {
-    machine_type = "custom-8-16384"
+    machine_type = "e2-custom-8-16384"
     image_type   = "UBUNTU_CONTAINERD"
     disk_size_gb = 100
     metadata = {
       "startup-script-url" = "gs://staging-standard-cluster/system-init-script.sh"
+      "disable-legacy-endpoints" = "true"
     }
   }
 
