@@ -31,6 +31,10 @@ resource "google_container_cluster" "centrifugo" {
       enabled = true
     }
   }
+
+  resource_labels = {
+    "mesh_id" = "proj-495370126123"
+  }
 }
 
 resource "google_container_node_pool" "centrifugo_preemptible_nodes" {
