@@ -55,6 +55,7 @@ resource "google_container_node_pool" "yakiimo_preemptible_nodes" {
     disk_size_gb = 100
     metadata = {
       "startup-script-url" = "gs://staging-standard-cluster/system-init-script.sh"
+      "disable-legacy-endpoints" = "true"
     }
   }
 
