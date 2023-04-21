@@ -38,7 +38,7 @@ resource "google_container_cluster" "centrifugo" {
 }
 
 resource "google_container_node_pool" "centrifugo_preemptible_nodes" {
-  name       = "pool-3"
+  name       = "pool-1"
   location   = "asia-northeast1"
   cluster    = google_container_cluster.centrifugo.name
   project    = "smartcart-stagingization"
@@ -61,7 +61,7 @@ resource "google_container_node_pool" "centrifugo_preemptible_nodes" {
   }
 
   autoscaling {
-    total_min_node_count = 0
+    total_min_node_count = 1
     total_max_node_count = 10
   }
 }
