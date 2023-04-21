@@ -22,19 +22,6 @@ resource "google_container_cluster" "yakiimo" {
     services_ipv4_cidr_block = "10.16.128.0/22"
   }
 
-  default_snat_status {
-    disabled = false
-  }
-
-  enable_autopilot = false
-  enable_binary_authorization = false
-  enable_intranode_visibility = false
-  enable_kubernetes_alpha = false
-  enable_l4_ilb_subsetting = false
-  enable_legacy_abac = false
-  enable_shielded_nodes = true
-  enable_tpu = false
-
   release_channel {
     channel = "UNSPECIFIED"
   }
@@ -43,22 +30,11 @@ resource "google_container_cluster" "yakiimo" {
     dns_cache_config {
       enabled = true
     }
-    gce_persistent_disk_csi_driver_config {
-      enabled = true
-    }
-    network_policy_config {
-      disabled = true
-    }
   }
 
-  binary_authorization {
-    enabled = false
-  }
-
-  cluster_autoscaling {
-    enabled = false
-  }
-
+  #workload_identity_config {
+  #  workload_pool = "smartcart-stagingization.svc.id.goog"
+  #}
 }
 
 resource "google_container_node_pool" "yakiimo_preemptible_nodes" {
