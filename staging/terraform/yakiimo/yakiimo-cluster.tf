@@ -3,14 +3,14 @@ resource "google_container_cluster" "yakiimo" {
   location = "asia-northeast1"
   project  = "smartcart-stagingization"
 
-  network  = "default"
-  subnetwork = "staging-to-4u"
+  network  = "projects/smartcart-stagingization/global/networks/default"
+  subnetwork = "projects/smartcart-stagingization/regions/asia-northeast1/subnetworks/staging-to-4u"
 
   initial_node_count = 1
   remove_default_node_pool = true
 
   node_config {
-    machine_type = "e2-micro"
+    machine_type = "custom-4-4096"
   }
 
   private_cluster_config {
@@ -43,12 +43,13 @@ resource "google_container_cluster" "yakiimo" {
     }
   }
 
-  binary_authorization {
-    enabled = false
-  }
 
   cluster_autoscaling {
     enabled = false
+  }
+
+  resource_labels {
+    mesh_id = "proj-495370126123"
   }
 
 }
