@@ -9,10 +9,6 @@ resource "google_container_cluster" "centrifugo" {
   initial_node_count = 1
   remove_default_node_pool = true
 
-  node_config {
-    machine_type = "e2-custom-4-6144"
-  }
-
   private_cluster_config {
     enable_private_nodes = false
   }
