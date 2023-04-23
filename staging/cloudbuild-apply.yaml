@@ -7,9 +7,8 @@ steps:
 #   - "-c"
 #   - |
 #       cd staging/terraform/manju
-#       terraform init
 #       terraform plan
-
+#       terraform apply -auto-approve
 
 
 # - id: "centrifugo_cluster"
@@ -19,8 +18,8 @@ steps:
 #   - "-c"
 #   - |
 #       cd staging/terraform/centrifugo
-#       terraform init
 #       terraform plan
+#       terraform apply -auto-approve
 
 
 
@@ -31,7 +30,6 @@ steps:
   - "-c"
   - |
       cd staging/terraform/yakiimo
-      terraform init
       terraform plan
       terraform apply -auto-approve
 
@@ -44,7 +42,6 @@ steps:
 #   - "-c"
 #   - |
 #       cd staging/terraform/test
-#       terraform init
 #       terraform plan
 #       terraform apply -auto-approve
 
