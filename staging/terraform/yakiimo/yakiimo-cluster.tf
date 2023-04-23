@@ -42,7 +42,7 @@ resource "google_container_cluster" "yakiimo" {
 }
 
 resource "google_container_node_pool" "yakiimo_preemptible_nodes" {
-  name       = "pool-1"
+  name       = "pool-2"
   location   = "asia-northeast1"
   cluster    = google_container_cluster.yakiimo.name
   project    = "smartcart-stagingization"
