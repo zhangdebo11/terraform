@@ -10,7 +10,7 @@ resource "google_container_cluster" "yakiimo" {
   remove_default_node_pool = true
 
   node_config {
-    machine_type = "custom-4-4096"
+    machine_type = "custom-4-6144"
   }
 
   private_cluster_config {
