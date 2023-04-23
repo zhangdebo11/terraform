@@ -48,7 +48,7 @@ resource "google_container_node_pool" "test_preemptible_nodes" {
   node_count = 1
 
   node_config {
-    machine_type = "e2-custom-1-1024"
+    machine_type = "e2-custom-1-2048"
     image_type   = "UBUNTU_CONTAINERD"
     disk_size_gb = 100
     metadata = {
