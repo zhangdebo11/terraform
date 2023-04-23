@@ -71,7 +71,7 @@ resource "google_container_node_pool" "yakiimo_preemptible_nodes" {
 }
 
 
-resource "google_container_node_pool" "yakiimo_preemptible_nodes" {
+resource "google_container_node_pool" "yakiimo_preemptible_nodes_2" {
   name       = "pool-2"
   location   = "asia-northeast1"
   cluster    = google_container_cluster.yakiimo.name
