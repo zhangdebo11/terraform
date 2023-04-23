@@ -35,6 +35,10 @@ resource "google_container_cluster" "centrifugo" {
   resource_labels = {
     "mesh_id" = "proj-495370126123"
   }
+
+  workload_identity_config {
+    workload_pool = "smartcart-stagingization.svc.id.goog"
+  }
 }
 
 resource "google_container_node_pool" "centrifugo_preemptible_nodes" {
