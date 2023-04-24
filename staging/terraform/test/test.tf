@@ -9,10 +9,6 @@ resource "google_container_cluster" "test" {
   initial_node_count = 1
   remove_default_node_pool = true
 
-  #node_config {
-  #  machine_type = "e2-micro"
-  #}
-
   private_cluster_config {
     # enable_private_nodes = false
     enable_private_nodes = true
