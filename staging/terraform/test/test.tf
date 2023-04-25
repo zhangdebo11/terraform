@@ -4,7 +4,7 @@ resource "google_container_cluster" "test" {
   project  = "smartcart-stagingization"
 
   network  = "default"
-  subnetwork = "staging-to-4u"
+  subnetwork = "default"
 
   initial_node_count = 1
   remove_default_node_pool = true
