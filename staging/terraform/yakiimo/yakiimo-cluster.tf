@@ -37,36 +37,6 @@ resource "google_container_cluster" "yakiimo" {
   }
 }
 
-resource "google_container_node_pool" "yakiimo_preemptible_nodes" {
-  name       = "pool-1"
-  location   = "asia-northeast1"
-  cluster    = google_container_cluster.yakiimo.name
-  project    = "smartcart-stagingization"
-
-  node_count = 1
-
-  node_config {
-    machine_type = "custom-6-8192"
-    image_type   = "UBUNTU_CONTAINERD"
-    disk_size_gb = 100
-    metadata = {
-      "startup-script-url" = "gs://staging-standard-cluster/system-init-script.sh"
-      "disable-legacy-endpoints" = "true"
-    }
-  }
-
-  management {
-    auto_upgrade = true
-    auto_repair = true
-  }
-
-  autoscaling {
-    total_min_node_count = 1
-    total_max_node_count = 10
-  }
-}
-
-
 resource "google_container_node_pool" "yakiimo_preemptible_nodes_3" {
   name       = "pool-3"
   location   = "asia-northeast1"
