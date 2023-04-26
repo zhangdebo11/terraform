@@ -72,7 +72,7 @@ resource "google_container_node_pool" "yakiimo_preemptible_nodes_2" {
   cluster    = google_container_cluster.yakiimo.name
   project    = "smartcart-stagingization"
 
-  node_count = 1
+  node_count = 2
 
   node_config {
     machine_type = "custom-4-6144"
