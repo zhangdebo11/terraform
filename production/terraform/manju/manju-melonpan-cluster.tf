@@ -32,7 +32,6 @@ resource "google_container_cluster" "primary" {
   resource_labels = {
     "environment" = "production"
     "project" = "manju"
-    # "mesh_id" = "proj-495370126123"
   }
 
   workload_identity_config {
@@ -40,14 +39,14 @@ resource "google_container_cluster" "primary" {
   }
 }
 
-resource "google_container_node_pool" "primary_preemptible_nodes" {
+resource "google_container_node_pool" "primary_preemptible_nodes_1" {
   name       = "pool-1"
   location   = "asia-northeast1"
   cluster    = google_container_cluster.primary.name
   project    = "smartcart-productionization"
 
   node_config {
-    machine_type = "e2-custom-8-16384"
+    machine_type = "e2-custom-4-4096"
     image_type   = "UBUNTU_CONTAINERD"
     disk_size_gb = 100
     metadata = {
@@ -74,61 +73,7 @@ resource "google_container_node_pool" "primary_preemptible_nodes_2" {
   project    = "smartcart-productionization"
 
   node_config {
-    machine_type = "e2-custom-4-8192"
-    image_type   = "UBUNTU_CONTAINERD"
-    disk_size_gb = 100
-    metadata = {
-      "startup-script-url" = "gs://production-standard-cluster/system-init-script.sh"
-      "disable-legacy-endpoints" = "true"
-    }
-  }
-
-  management {
-    auto_upgrade = true
-    auto_repair = true
-  }
-
-  autoscaling {
-    total_min_node_count = 0
-    total_max_node_count = 20
-  }
-}
-
-resource "google_container_node_pool" "primary_preemptible_nodes_3" {
-  name       = "pool-3"
-  location   = "asia-northeast1"
-  cluster    = google_container_cluster.primary.name
-  project    = "smartcart-productionization"
-
-  node_config {
-    machine_type = "e2-custom-6-12288"
-    image_type   = "UBUNTU_CONTAINERD"
-    disk_size_gb = 100
-    metadata = {
-      "startup-script-url" = "gs://production-standard-cluster/system-init-script.sh"
-      "disable-legacy-endpoints" = "true"
-    }
-  }
-
-  management {
-    auto_upgrade = true
-    auto_repair = true
-  }
-
-  autoscaling {
-    total_min_node_count = 0
-    total_max_node_count = 20
-  }
-}
-
-resource "google_container_node_pool" "primary_preemptible_nodes_4" {
-  name       = "pool-4"
-  location   = "asia-northeast1"
-  cluster    = google_container_cluster.primary.name
-  project    = "smartcart-productionization"
-
-  node_config {
-    machine_type = "e2-custom-2-4096"
+    machine_type = "e2-custom-8-8192"
     image_type   = "UBUNTU_CONTAINERD"
     disk_size_gb = 100
     metadata = {
