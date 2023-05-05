@@ -37,35 +37,6 @@ resource "google_container_cluster" "yakiimo" {
   }
 }
 
-
-resource "google_container_node_pool" "yakiimo_preemptible_nodes_1" {
-  name       = "pool-1"
-  location   = "asia-northeast1"
-  cluster    = google_container_cluster.yakiimo.name
-  project    = "smartcart-stagingization"
-
-  node_config {
-    machine_type = "custom-2-2048"
-    image_type   = "UBUNTU_CONTAINERD"
-    disk_size_gb = 100
-    metadata = {
-      "startup-script-url" = "gs://staging-standard-cluster/system-init-script.sh"
-      "disable-legacy-endpoints" = "true"
-    }
-  }
-
-  management {
-    auto_upgrade = true
-    auto_repair = true
-  }
-
-  autoscaling {
-    total_min_node_count = 0
-    total_max_node_count = 20
-  }
-}
-
-
 resource "google_container_node_pool" "yakiimo_preemptible_nodes_2" {
   name       = "pool-2"
   location   = "asia-northeast1"
@@ -101,6 +72,33 @@ resource "google_container_node_pool" "yakiimo_preemptible_nodes_3" {
 
   node_config {
     machine_type = "custom-4-4096"
+    image_type   = "UBUNTU_CONTAINERD"
+    disk_size_gb = 100
+    metadata = {
+      "startup-script-url" = "gs://staging-standard-cluster/system-init-script.sh"
+      "disable-legacy-endpoints" = "true"
+    }
+  }
+
+  management {
+    auto_upgrade = true
+    auto_repair = true
+  }
+
+  autoscaling {
+    total_min_node_count = 0
+    total_max_node_count = 20
+  }
+}
+
+resource "google_container_node_pool" "yakiimo_preemptible_nodes_4" {
+  name       = "pool-4"
+  location   = "asia-northeast1"
+  cluster    = google_container_cluster.yakiimo.name
+  project    = "smartcart-stagingization"
+
+  node_config {
+    machine_type = "custom-4-6144"
     image_type   = "UBUNTU_CONTAINERD"
     disk_size_gb = 100
     metadata = {
