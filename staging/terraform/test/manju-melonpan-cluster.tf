@@ -35,7 +35,7 @@ resource "google_container_cluster" "test" {
 
   cluster_autoscaling {
     enabled = true
-    resource_limits = [
+    resource_limits {
       {
         resource_type = "cpu"
         minimum = 1
@@ -46,7 +46,7 @@ resource "google_container_cluster" "test" {
         minimum = 1
         maximum = 64
       }
-    ]
+    }
   }
 }
 
