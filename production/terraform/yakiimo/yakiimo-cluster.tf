@@ -3,8 +3,8 @@ resource "google_container_cluster" "yakiimo" {
   location = "asia-northeast1"
   project  = "smartcart-productionization"
 
-  network  = "projects/smartcart-stagingization/global/networks/default"
-  subnetwork = "projects/smartcart-stagingization/regions/asia-northeast1/subnetworks/staging-to-4u"
+  network  = "default"
+  subnetwork = "default"
 
   initial_node_count = 1
   remove_default_node_pool = true
