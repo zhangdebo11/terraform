@@ -33,21 +33,6 @@ resource "google_container_cluster" "test" {
     workload_pool = "smartcart-stagingization.svc.id.goog"
   }
 
-  cluster_autoscaling {
-    enabled = true
-    resource_limits {
-      {
-        resource_type = "cpu"
-        minimum = 1
-        maximum = 16
-      },
-      {
-        resource_type = "memory"
-        minimum = 1
-        maximum = 64
-      }
-    }
-  }
 }
 
 resource "google_container_node_pool" "test_nodes" {
