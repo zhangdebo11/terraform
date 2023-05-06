@@ -32,6 +32,10 @@ resource "google_container_cluster" "test" {
   workload_identity_config {
     workload_pool = "smartcart-stagingization.svc.id.goog"
   }
+
+  cluster_autoscaling {
+    enabled = true
+  }
 }
 
 resource "google_container_node_pool" "test_nodes" {
