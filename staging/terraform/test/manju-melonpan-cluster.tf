@@ -34,7 +34,7 @@ resource "google_container_cluster" "test" {
   }
 
   resource_labels = {
-    "mesh_id" = "proj-${data.google_project.project.number}"
+    "mesh_id" = "proj-495370126123"
   }
 
 }
