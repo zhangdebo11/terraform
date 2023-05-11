@@ -33,6 +33,10 @@ resource "google_container_cluster" "test" {
     workload_pool = "smartcart-stagingization.svc.id.goog"
   }
 
+  resource_labels = {
+    "mesh_id" = "proj-${data.google_project.project.number}"
+  }
+
 }
 
 resource "google_container_node_pool" "test_nodes" {
@@ -59,4 +63,12 @@ resource "google_container_node_pool" "test_nodes" {
     total_min_node_count = 0
     total_max_node_count = 10
   }
+}
+
+module "asm" {
+  source            = "terraform-google-modules/kubernetes-engine/google//modules/asm"
+  project_id        = google_container_cluster.test.project
+  cluster_name      = google_container_cluster.test.name
+  cluster_location  = google_container_cluster.test.location
+  # enable_cni        = true
 }
